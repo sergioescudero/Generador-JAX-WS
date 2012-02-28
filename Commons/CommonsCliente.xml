@@ -1,7 +1,7 @@
 <?xml version="1.0"?> 
 	
 	<!-- base directory -->
-    <project name="MockupPalestraWS" default="CommonsPalestra" basedir="./"> 
+    <project name="Generador-JAX-WS" default="GenerarWSDLJavaClasses" basedir="./"> 
     <property file="antBuild.properties" />
     
     <!-- SimuladorObtencionFicheroLogs_Servidor (SOFL) -->
@@ -185,7 +185,7 @@
     </target>
 
     
-    <target name="CommonsPalestra" depends="clean, GenerarWSDL, GenerarClasesJAVA_FILE">
+    <target name="GenerarWSDLJavaClasses" depends="clean, GenerarWSDL, GenerarClasesJAVA_FILE">
     	<echo message="wsdl and classes generation task"/>
     </target>
 
