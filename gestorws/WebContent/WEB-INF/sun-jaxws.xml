@@ -5,6 +5,6 @@
   version="2.0">
   <endpoint
       name="MockupWS"
-      implementation="com.sergio.ws.MockupWS"
+      implementation="com.sergio.ws.impl.MockupWSImpl"
       url-pattern="/mockup"/>
 </endpoints>
