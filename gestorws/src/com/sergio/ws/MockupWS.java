@@ -15,7 +15,7 @@ public class MockupWS {
 
 	@WebMethod(operationName = "ejecutarMetodoWS")
 	@WebResult(name = "resultadoOperacion")
-	public String extraerEventosMockupPalestra(
+	public String ejecutarMetodoWS(
 			@WebParam(name = "sessionGuid", mode = Mode.IN) String sessionGuid,
 			@WebParam(name = "parametro01", mode = Mode.IN) String parametro01,
 			@WebParam(name = "parametro02", mode = Mode.IN) String parametro02) {
