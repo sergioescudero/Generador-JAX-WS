@@ -13,7 +13,7 @@
 	<!-- WSIMPORT -->
 	<!-- path to wsimport -->
 	<property name="wsimport-path" value="${wsimport.ruta}"/>
-	<!-- wsgen executable -->
+	<!-- wsimport executable -->
 	<property name="wsimport-runable" value="${wsimport-path}/${wsimport.ejecutable}"/>
     
     <!-- PROYECTO SERVIDOR -->
@@ -39,6 +39,7 @@
 	<property name="proyectoCliente" value="../${proyecto.servicioweb.cliente.nombre}/"/>
     <!-- Root of src. --> 
     <property name="cliente-src-dir" value="${proyectoCliente}/src/"/>
+	<property name="cliente-target-package" value="${proyecto.servicioweb.cliente.package}"/>
     
     <!-- RUTA WSDL -->
     <!-- path to WSDL -->
@@ -63,9 +64,17 @@
    			<fileset dir="${servidor_src-outdir}" includes="**/*"/>
    		</delete>
     </target>
+    
+    <target name="createDIRs" 
+    	    description="Creates directories.">
+   		<mkdir dir="${servidor_wsgen-outdir}"/>
+    	<mkdir dir="${servidor_artifacts-outdir}"/>
+    	<mkdir dir="${servidor_wsdl-outdir}"/>
+    	<mkdir dir="${servidor_src-outdir}"/>
+    </target>
 
     <target name="GenerarWSDL"> 
-    	<echo message="calling the web services generation task wsgen" /> 
+    	<echo message="calling the web services generation task wsgen" />
         <exec executable="${wsgen-runable}"> 
             <arg value="-verbose"/> 
             <!-- Set the classpath. --> 
@@ -110,6 +119,8 @@
     	    <!-- Set the classpath. --> 
     	    <arg value="-d"/> 
     	    <arg value="${cliente-src-dir}"/> 
+    	    <arg value="-p"/> 
+            <arg value="${cliente-target-package}"/> 
     	    <!-- Keep generated source files. --> 
     	    <arg value="-keep"/> 
     	    <!-- path to wsdl -->
@@ -118,7 +129,7 @@
 	</target>  
 
     
-    <target name="GenerarWSDLJavaClasses" depends="clean, GenerarWSDL, GenerarClasesJAVA_FILE">
+    <target name="GenerarWSDLJavaClasses" depends="clean, createDIRs, GenerarWSDL, GenerarClasesJAVA_FILE">
     	<echo message="wsdl and classes generation task"/>
     </target>
 
