@@ -10,7 +10,7 @@ import javax.jws.WebService;
 
 //PARA FICHEROS
 //@javax.xml.ws.soap.MTOM
-@WebService(serviceName = "MockupWS")
+@WebService
 public interface MockupWS {
 
 	@WebMethod(operationName = "ejecutarMetodoWS")

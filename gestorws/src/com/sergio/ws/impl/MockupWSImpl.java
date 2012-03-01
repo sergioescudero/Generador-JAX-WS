@@ -4,7 +4,7 @@ import javax.jws.WebService;
 
 import com.sergio.ws.MockupWS;
 
-@WebService(endpointInterface ="com.sergio.ws.MockupWS")
+@WebService(serviceName = "MockupWS", endpointInterface ="com.sergio.ws.MockupWS")
 public class MockupWSImpl implements MockupWS{
 
 	public String ejecutarMetodoWS(String sessionGuid, String parametro01,
